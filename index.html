@@ -44,7 +44,6 @@
       height: 50px;
       object-fit: contain;
     }
-    
   </style>
 </head>
 
@@ -71,13 +70,12 @@
 
   <!-- INICIO -->
   <section id="inicio" class="d-flex flex-column justify-content-center align-items-center text-center fade-in">
-    <img src="img/file.JPG"
-      class="rounded-circle mb-3 border border-3 border-info shadow" alt="Foto de perfil">
+    <img src="img/file.JPG" class="rounded-circle mb-3 border border-3 border-info shadow" alt="Foto de perfil">
     <h1 class="fw-bold mb-2" style="font-size: 2rem;">Christian Sánchez</h1>
     <p class="lead text-secondary mb-3" style="font-size: 1.1rem;">
       Desarrollador Backend | Java • Spring Boot • APIs REST
     </p>
-    <a href="#contacto" class="btn btn-info text-dark fw-semibold px-4">Contáctame</a>
+    <a href="#contacto" class="btn btn-info text-dark fw-semibold px-4 mb-1">Contáctame</a>
   </section>
 
   <!-- SOBRE MÍ -->
@@ -86,9 +84,9 @@
       <h2 class="text-center text-info mb-4">Sobre mí</h2>
       <p class="text-center mx-auto fs-5" style="max-width: 700px;">
         Soy un desarrollador backend apasionado por construir sistemas robustos y escalables.
-        Me especializo en el ecosistema de Java con Spring Boot, tengo experiencia en la creación de APIs REST seguras,
+        Me especializo en el ecosistema de Java con Spring Boot, tengo experiencia en la creación de APIs REST e implementación de seguridad usando JWT,
         integración con bases de datos como MySQL, uso de Git y consumo de APIs desde el frontend con React y Kotlin.
-        Busco seguir creciendo en arquitectura de software y microservicios.
+        Busco seguir creciendo en arquitectura de software y desarrollo de microservicios.
       </p>
     </div>
   </section>
@@ -126,11 +124,27 @@
           </div>
         </div>
 
-        <!-- REST API -->
+        <!-- REST -->
         <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
           <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <i class="bi bi-link-45deg fs-1 text-info"></i>
+          <i class="bi bi-diagram-3 fs-1 text-info"></i>
             <p>REST APIs</p>
+          </div>
+        </div>
+
+        <!-- Git -->
+        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
+          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+              class="skill-logo mb-2">
+            <p>Git</p>
+          </div>
+        </div>
+        <!-- JTW -->
+        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
+          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
+            <i class="bi bi-shield-lock fs-1 text-info"></i>
+            <p>JWT / OAuth</p>
           </div>
         </div>
 
@@ -143,8 +157,7 @@
           </div>
         </div>
 
-        <!-- JWT -->
-
+        <!-- React -->
         <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
           <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
@@ -160,7 +173,7 @@
   <!-- PROYECTOS -->
   <section id="proyectos" class="py-5 bg-black">
     <div class="container">
-      <h2 class="text-center text-info mb-5">Proyectos Destacados</h2>
+      <h2 class="text-center text-info mb-5">Proyectos</h2>
       <div class="row gy-4">
 
 
@@ -204,81 +217,120 @@
           </div>
         </div>
 
-        <!-- Proyecto 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card bg-dark text-light border-secondary h-100">
+            <div class="card-body">
+              <h5 class="card-title text-info">Backend Control de Clientes</h5>
+              <p class="card-text">Backend REST desarrollado con Spring Boot e implementación de JWT para la seguridad.</p>
+              <a href="https://github.com/Chrysr17/control-clientes" target="_blank" class="btn btn-outline-info btn-sm">
+                <i class="bi bi-github"></i> Ver en GitHub
+              </a>
+            </div>
+          </div>
+        </div>
 
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card bg-dark text-light border-secondary h-100">
+            <div class="card-body">
+              <h5 class="card-title text-info">Frontend Control de Clientes</h5>
+              <p class="card-text">Frontend desarrollado con React, consume la API del Backend para el control de
+                clientes.</p>
+              <a href="https://github.com/Chrysr17/control-clientes-front" target="_blank" class="btn btn-outline-info btn-sm">
+                <i class="bi bi-github"></i> Ver en GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card bg-dark text-light border-secondary h-100">
+            <div class="card-body">
+              <h5 class="card-title text-info">Login con Google OAuth 2.0 </h5>
+              <p class="card-text">Ejemplo de login usando Spring Security y Google OAuth 2.0</p>
+              <a href="https://github.com/Chrysr17/login-oauth" target="_blank" class="btn btn-outline-info btn-sm">
+                <i class="bi bi-github"></i> Ver en GitHub
+              </a>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
   </section>
   <!-- CERTIFICADOS -->
-<section id="certificados" class="py-5 bg-dark text-light">
-  <div class="container">
-    <h2 class="text-center text-info mb-5 fw-bold">Certificados</h2>
+  <section id="certificados" class="py-5 bg-dark text-light">
+    <div class="container">
+      <h2 class="text-center text-info mb-5 fw-bold">Certificados</h2>
 
-    <div class="row g-4 justify-content-center">
+      <div class="row g-4 justify-content-center">
 
-      <!-- Certificado 1 -->
-      <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
-        <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card" style="width: 100%; max-width: 280px;">
-          <img src="img/cloudcomputing.JPG" class="card-img-top" alt="Certificado Cloud">
-          <div class="card-body text-center">
-            <h6 class="text-info fw-semibold mb-1">Fundamentos de Cloud Computing</h6>
-            <p class="text-secondary small mb-1">AWS · Azure · Google Cloud</p>
-            <p class="text-secondary small mb-0">UNI</p>
+        <!-- Certificado 1 -->
+        <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
+          <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card"
+            style="width: 100%; max-width: 280px;">
+            <img src="img/cloudcomputing.JPG" class="card-img-top" alt="Certificado Cloud">
+            <div class="card-body text-center">
+              <h6 class="text-info fw-semibold mb-1">Fundamentos de Cloud Computing</h6>
+              <p class="text-secondary small mb-0">UNI</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Certificado 2 -->
-      <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
-        <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card" style="width: 100%; max-width: 280px;">
-          <img src="img/cienciadatos.JPG" class="card-img-top" alt="Certificado Ciencia de Datos">
-          <div class="card-body text-center">
-            <h6 class="text-info fw-semibold mb-1">Ciencia de Datos I</h6>
-            <p class="text-secondary small mb-0">UNI</p>
+        <!-- Certificado 2 -->
+        <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
+          <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card"
+            style="width: 100%; max-width: 280px;">
+            <img src="img/cienciadatos.JPG" class="card-img-top" alt="Certificado Ciencia de Datos">
+            <div class="card-body text-center">
+              <h6 class="text-info fw-semibold mb-1">Ciencia de Datos I</h6>
+              <p class="text-secondary small mb-0">UNI</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Certificado 3 -->
-      <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
-        <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card" style="width: 100%; max-width: 280px;">
-          <img src="img/diseño.JPG" class="card-img-top" alt="Certificado Web">
-          <div class="card-body text-center">
-            <h6 class="text-info fw-semibold mb-1">Diseño y Desarrollo Web</h6>
-            <p class="text-secondary small mb-0">IDAT</p>
+        <!-- Certificado 3 -->
+        <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
+          <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card"
+            style="width: 100%; max-width: 280px;">
+            <img src="img/diseño.JPG" class="card-img-top" alt="Certificado Web">
+            <div class="card-body text-center">
+              <h6 class="text-info fw-semibold mb-1">Diseño y Desarrollo Web</h6>
+              <p class="text-secondary small mb-0">IDAT</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Certificado 4 -->
-      <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
-        <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card" style="width: 100%; max-width: 280px;">
-          <img src="img/scrum.JPG" class="card-img-top" alt="Certificado Scrum">
-          <div class="card-body text-center">
-            <h6 class="text-info fw-semibold mb-1">Scrum Fundamentals</h6>
-            <p class="text-secondary small mb-0">SCRUMstudy</p>
+        <!-- Certificado 4 -->
+        <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
+          <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card"
+            style="width: 100%; max-width: 280px;">
+            <img src="img/scrum.JPG" class="card-img-top" alt="Certificado Scrum">
+            <div class="card-body text-center">
+              <h6 class="text-info fw-semibold mb-1">Scrum Fundamentals</h6>
+              <p class="text-secondary small mb-0">SCRUMstudy</p>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
 
-  <style>
-    .hover-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .hover-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    }
-    .card-img-top {
-      height: 180px;
-      object-fit: cover;
-    }
-  </style>
-</section>
+    <style>
+      .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .hover-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      }
+
+      .card-img-top {
+        height: 180px;
+        object-fit: cover;
+      }
+    </style>
+  </section>
 
 
   <!-- CONTACTO -->
