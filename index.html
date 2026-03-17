@@ -8,476 +8,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-
-  <style>
-    :root {
-      --bg: #0f172a;
-      --bg-soft: #111c34;
-      --surface: #16213d;
-      --surface-2: #1b2947;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --primary: #38bdf8;
-      --primary-dark: #0ea5e9;
-      --border: rgba(148, 163, 184, 0.16);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-      --radius: 18px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: linear-gradient(180deg, #0b1222 0%, #0f172a 100%);
-      color: var(--text);
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-    }
-
-    section {
-      padding: 90px 0;
-      scroll-margin-top: 90px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title span {
-      color: var(--primary);
-    }
-
-    .section-subtitle {
-      max-width: 760px;
-      margin: 0 auto 3rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1rem;
-    }
-
-    .custom-card {
-      background: rgba(22, 33, 61, 0.78);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: all 0.7s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* NAVBAR */
-    .navbar {
-      background: rgba(10, 18, 34, 0.9) !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar-brand {
-      font-weight: 800;
-      letter-spacing: 0.3px;
-    }
-
-    .nav-link {
-      color: #e2e8f0 !important;
-      font-weight: 500;
-      transition: color 0.25s ease;
-    }
-
-    .nav-link:hover,
-    .nav-link.active-link {
-      color: var(--primary) !important;
-    }
-
-    /* HERO */
-    #inicio {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 120px;
-      padding-bottom: 60px;
-      position: relative;
-    }
-
-    #inicio::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.10), transparent 18%),
-        radial-gradient(circle at 85% 10%, rgba(14, 165, 233, 0.08), transparent 16%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0.55rem 1rem;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.10);
-      color: var(--primary);
-      border: 1px solid rgba(56, 189, 248, 0.18);
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-title {
-      font-size: clamp(2.4rem, 5vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.08;
-      margin-bottom: 1rem;
-    }
-
-    .hero-title span {
-      color: var(--primary);
-    }
-
-    .hero-text {
-      max-width: 660px;
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.9;
-      margin-bottom: 2rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 2rem;
-    }
-
-    .btn-main {
-      background: var(--primary);
-      color: #062033;
-      border: none;
-      border-radius: 999px;
-      padding: 0.9rem 1.45rem;
-      font-weight: 700;
-      transition: all 0.25s ease;
-    }
-
-    .btn-main:hover {
-      background: var(--primary-dark);
-      color: #ffffff;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-custom {
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 0.9rem 1.45rem;
-      font-weight: 600;
-      transition: all 0.25s ease;
-    }
-
-    .btn-outline-custom:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .hero-highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .hero-pill {
-      padding: 0.8rem 1rem;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
-      min-width: 150px;
-    }
-
-    .hero-pill h6 {
-      margin: 0;
-      color: var(--text);
-      font-weight: 700;
-      font-size: 0.98rem;
-    }
-
-    .hero-pill p {
-      margin: 0.2rem 0 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .hero-image-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .hero-image-wrapper::before {
-      content: "";
-      position: absolute;
-      inset: -10px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(14, 165, 233, 0.05));
-      filter: blur(18px);
-      z-index: 0;
-    }
-
-    .hero-image {
-      width: 340px;
-      height: 420px;
-      object-fit: cover;
-      border-radius: 24px;
-      border: 1px solid rgba(56, 189, 248, 0.18);
-      position: relative;
-      z-index: 1;
-      box-shadow: var(--shadow);
-    }
-
-    /* ABOUT */
-    .about-card {
-      padding: 2rem;
-    }
-
-    .about-card p {
-      color: var(--muted);
-      line-height: 1.95;
-      margin: 0;
-      font-size: 1.03rem;
-    }
-
-    .highlight {
-      color: var(--primary);
-      font-weight: 700;
-    }
-
-    /* SKILLS */
-    .skill-card {
-      height: 100%;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      background: rgba(22, 33, 61, 0.78);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      transition: all 0.25s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(56, 189, 248, 0.35);
-    }
-
-    .skill-logo {
-      width: 52px;
-      height: 52px;
-      object-fit: contain;
-      margin-bottom: 0.85rem;
-    }
-
-    .skill-card p {
-      margin: 0;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    /* PROJECTS */
-    .project-card {
-      height: 100%;
-      background: rgba(22, 33, 61, 0.82);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      transition: all 0.28s ease;
-      box-shadow: var(--shadow);
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(56, 189, 248, 0.3);
-    }
-
-    .project-card .card-body {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .project-card .card-title {
-      font-weight: 700;
-      color: var(--text);
-      margin: 0;
-    }
-
-    .project-card .card-text {
-      color: var(--muted);
-      line-height: 1.75;
-      margin: 0;
-      flex-grow: 1;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.16);
-      color: #cbefff;
-      padding: 0.38rem 0.72rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .project-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    /* CERTIFICADOS */
-    .certificate-card {
-      height: 100%;
-      background: rgba(22, 33, 61, 0.82);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: all 0.28s ease;
-    }
-
-    .certificate-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(56, 189, 248, 0.3);
-    }
-
-    .certificate-card img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-    }
-
-    .certificate-card .card-body {
-      padding: 1.15rem;
-    }
-
-    /* CONTACTO */
-    .contact-card {
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .contact-card p {
-      color: var(--muted);
-      line-height: 1.85;
-    }
-
-    .contact-info {
-      color: var(--text);
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    .social-links a {
-      width: 56px;
-      height: 56px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.03);
-      font-size: 1.3rem;
-      transition: all 0.25s ease;
-    }
-
-    .social-links a:hover {
-      color: var(--primary);
-      border-color: rgba(56, 189, 248, 0.35);
-      transform: translateY(-3px);
-    }
-
-    /* BACK TO TOP */
-    .back-to-top {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 48px;
-      height: 48px;
-      border: none;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #062033;
-      font-size: 1.1rem;
-      font-weight: 700;
-      box-shadow: 0 10px 20px rgba(56, 189, 248, 0.18);
-      display: none;
-      z-index: 999;
-    }
-
-    .back-to-top.show {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: rgba(10, 18, 34, 0.85);
-    }
-
-    @media (max-width: 991px) {
-      #inicio {
-        text-align: center;
-      }
-
-      .hero-text {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions,
-      .hero-highlights {
-        justify-content: center;
-      }
-
-      .hero-image {
-        width: 290px;
-        height: 360px;
-        margin-top: 1.5rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .section-title {
-        font-size: 1.7rem;
-      }
-
-      .hero-title {
-        font-size: 2.25rem;
-      }
-
-      .about-card,
-      .contact-card {
-        padding: 1.4rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
@@ -515,7 +46,7 @@
           </div>
 
           <h1 class="hero-title">
-            Desarrollo soluciones <span>backend</span> modernas, seguras y escalables
+            Desarrollo de soluciones <span>backend</span> modernas, seguras y escalables
           </h1>
 
           <p class="hero-text">
@@ -597,35 +128,40 @@
       <div class="row g-4 justify-content-center">
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"
+              class="skill-logo">
             <p>Java</p>
           </div>
         </div>
 
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot"
+              class="skill-logo">
             <p>Spring Boot</p>
           </div>
         </div>
 
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
+              class="skill-logo">
             <p>MySQL</p>
           </div>
         </div>
 
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"
+              class="skill-logo">
             <p>Docker</p>
           </div>
         </div>
 
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+              class="skill-logo">
             <p>Git</p>
           </div>
         </div>
@@ -639,28 +175,32 @@
 
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"
+              class="skill-logo">
             <p>Next.js</p>
           </div>
         </div>
 
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
+              class="skill-logo">
             <p>React</p>
           </div>
         </div>
 
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular"
+              class="skill-logo">
             <p>Angular</p>
           </div>
         </div>
 
         <div class="col-6 col-md-4 col-lg-2 reveal">
           <div class="skill-card">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="skill-logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin"
+              class="skill-logo">
             <p>Kotlin</p>
           </div>
         </div>
@@ -673,7 +213,8 @@
     <div class="container">
       <h2 class="section-title text-center reveal">Proyectos <span>destacados</span></h2>
       <p class="section-subtitle text-center reveal">
-        Proyectos que reflejan experiencia en backend, frontend, arquitectura y desarrollo orientado a soluciones reales.
+        Proyectos que reflejan experiencia en backend, frontend, arquitectura y desarrollo orientado a soluciones
+        reales.
       </p>
 
       <div class="row g-4">
@@ -693,7 +234,8 @@
                 <span class="tag">Spring Security</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/sistema-clinico" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/sistema-clinico" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -716,7 +258,8 @@
                 <span class="tag">Docker</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/auto-finder" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/auto-finder" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -738,7 +281,8 @@
                 <span class="tag">API Gateway</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/auto-finder-front" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/auto-finder-front" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -760,7 +304,8 @@
                 <span class="tag">MySQL</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/gym-backend" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/gym-backend" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -782,7 +327,8 @@
                 <span class="tag">REST</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/gym-mobile" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/gym-mobile" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -804,7 +350,8 @@
                 <span class="tag">KPIs</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/gym-dashboard" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/gym-dashboard" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -826,7 +373,8 @@
                 <span class="tag">Security</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/control-clientes" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/control-clientes" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -848,7 +396,8 @@
                 <span class="tag">Axios</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/control-clientes-front" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/control-clientes-front" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -870,7 +419,8 @@
                 <span class="tag">Login</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/Chrysr17/login-oauth" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <a href="https://github.com/Chrysr17/login-oauth" target="_blank"
+                  class="btn btn-outline-info btn-sm rounded-pill">
                   <i class="bi bi-github me-1"></i>GitHub
                 </a>
               </div>
@@ -945,7 +495,8 @@
       <div class="custom-card contact-card mx-auto reveal" style="max-width: 820px;">
         <p class="mb-4">
           Puedes contactarme a través de mis redes profesionales, repositorios o correo electrónico.
-          Este portafolio está orientado a mostrar mi perfil técnico, proyectos y capacidad para desarrollar soluciones reales.
+          Este portafolio está orientado a mostrar mi perfil técnico, proyectos y capacidad para desarrollar soluciones
+          reales.
         </p>
 
         <p class="contact-info mb-4">
@@ -956,7 +507,8 @@
           <a href="https://wa.me/51981010364" target="_blank" aria-label="WhatsApp">
             <i class="bi bi-whatsapp"></i>
           </a>
-          <a href="https://www.instagram.com/christian_sr17?igsh=MTNqbGxpbnQwdm05Yw" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/christian_sr17?igsh=MTNqbGxpbnQwdm05Yw" target="_blank"
+            aria-label="Instagram">
             <i class="bi bi-instagram"></i>
           </a>
           <a href="https://github.com/Chrysr17" target="_blank" aria-label="GitHub">
@@ -984,61 +536,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    const reveals = document.querySelectorAll(".reveal");
-
-    function revealOnScroll() {
-      reveals.forEach((element) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const visiblePoint = 100;
-
-        if (elementTop < windowHeight - visiblePoint) {
-          element.classList.add("active");
-        }
-      });
-    }
-
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
-
-    const backToTop = document.getElementById("backToTop");
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add("show");
-      } else {
-        backToTop.classList.remove("show");
-      }
-    });
-
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
-
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove("active-link");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active-link");
-        }
-      });
-    });
+  <script src="js/script.js"></script>
   </script>
 </body>
 
