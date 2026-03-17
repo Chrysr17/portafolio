@@ -2,183 +2,551 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Christian Sánchez | Desarrollador Backend</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
   <style>
+    :root {
+      --bg: #0b0f14;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.75);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #22d3ee;
+      --primary-soft: rgba(34, 211, 238, 0.12);
+      --border: rgba(148, 163, 184, 0.18);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --radius: 1.25rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: #121212;
-      color: #f8f9fa;
+      background:
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 18%),
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    #inicio img {
-      width: 340px;
-      height: 340px;
-      object-fit: cover;
+    section {
+      scroll-margin-top: 90px;
     }
 
+    .section-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 3rem;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: rgba(5, 8, 14, 0.88) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-link {
+      color: #e2e8f0 !important;
+      transition: color 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
+
+    /* HERO */
     #inicio {
-      min-height: 80vh;
-      padding-top: 100px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 90px;
+      padding-bottom: 40px;
     }
 
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-text {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn-custom {
+      border-radius: 999px;
+      padding: 0.85rem 1.4rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary-custom {
+      background: var(--primary);
+      color: #06131a;
+      border: none;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(34, 211, 238, 0.22);
+      color: #06131a;
+    }
+
+    .btn-outline-custom {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-outline-custom:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-image-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.35), rgba(59, 130, 246, 0.15));
+      border-radius: 50%;
+      filter: blur(20px);
+      z-index: 0;
+    }
+
+    .hero-image {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid rgba(34, 211, 238, 0.5);
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow);
+    }
+
+    /* ABOUT */
+    .about-box {
+      padding: 2rem;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    /* SKILLS */
     .skill-card {
-      width: 130px;
-      height: 130px;
+      width: 100%;
+      min-height: 140px;
+      padding: 1.25rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
     }
 
     .skill-card:hover {
-      transform: translateY(-5px);
-      border-color: #0dcaf0;
+      transform: translateY(-6px);
+      border-color: rgba(34, 211, 238, 0.45);
+      box-shadow: 0 12px 25px rgba(34, 211, 238, 0.08);
     }
 
     .skill-logo {
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
       object-fit: contain;
+      margin-bottom: 0.85rem;
+    }
+
+    .skill-card p {
+      margin: 0;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    /* PROJECTS */
+    .project-card {
+      height: 100%;
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(34, 211, 238, 0.4);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .project-card .card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card .card-title {
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .project-card .card-text {
+      color: var(--muted);
+      flex-grow: 1;
+      line-height: 1.7;
+    }
+
+    /* CERTIFICADOS */
+    .certificate-card {
+      width: 100%;
+      max-width: 280px;
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .certificate-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(34, 211, 238, 0.4);
+      box-shadow: 0 16px 28px rgba(34, 211, 238, 0.12);
+    }
+
+    .certificate-card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    /* CONTACTO */
+    .contact-card {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .contact-text {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links a {
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+      font-size: 1.35rem;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+      border-color: rgba(34, 211, 238, 0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 18px rgba(34, 211, 238, 0.12);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      background: rgba(5, 8, 14, 0.88);
+    }
+
+    /* ANIMACIÓN */
+    .fade-up {
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+      #inicio {
+        text-align: center;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-image {
+        width: 260px;
+        height: 260px;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-text {
+        font-size: 1rem;
+      }
+
+      .about-box,
+      .contact-card {
+        padding: 1.4rem;
+      }
     }
   </style>
 </head>
 
-<body class="bg-dark text-light">
+<body>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top shadow">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold text-info" href="#">Christian Sánchez</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand text-info" href="#inicio">Christian Sánchez</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir navegación">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
           <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
           <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certificados">Certificados</a></li>
           <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- INICIO -->
-  <section id="inicio" class="d-flex flex-column justify-content-center align-items-center text-center fade-in">
-    <img src="img/file.jpg" class="rounded-circle mb-3 border border-3 border-info shadow" alt="Foto de perfil">
-    <h1 class="fw-bold mb-2" style="font-size: 2rem;">Christian Sánchez</h1>
-    <p class="lead text-secondary mb-3" style="font-size: 1.1rem;">
-      Desarrollador Backend | Java • Spring Boot • APIs REST
-    </p>
-    <a href="#contacto" class="btn btn-info text-dark fw-semibold px-4 mb-1">Contáctame</a>
+  <!-- HERO -->
+  <section id="inicio">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-7 fade-up">
+          <div class="hero-badge">
+            <i class="bi bi-code-slash"></i>
+            Desarrollador Backend
+          </div>
+
+          <h1 class="hero-title">
+            Hola, soy <span>Christian Sánchez</span>
+          </h1>
+
+          <p class="hero-text">
+            Desarrollo soluciones backend robustas y escalables con Java y Spring Boot.
+            Me enfoco en APIs REST, seguridad con JWT/OAuth, microservicios, bases de datos,
+            contenedores con Docker e integración con frontend moderno.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#proyectos" class="btn btn-custom btn-primary-custom">
+              <i class="bi bi-kanban me-2"></i>Ver proyectos
+            </a>
+            <a href="#contacto" class="btn btn-custom btn-outline-custom">
+              <i class="bi bi-send me-2"></i>Contáctame
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5 text-center fade-up">
+          <div class="hero-image-wrapper">
+            <img src="img/file.jpg" class="hero-image" alt="Foto de Christian Sánchez" />
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- SOBRE MÍ -->
-  <section id="sobre-mi" class="py-5 bg-black">
+  <section id="sobre-mi" class="py-5">
     <div class="container">
-      <h2 class="text-center text-info mb-4">Sobre mí</h2>
-      <p class="text-center mx-auto fs-5" style="max-width: 700px;">
-        Soy un desarrollador backend apasionado por construir sistemas robustos y escalables.
-        Me especializo en el ecosistema de Java con Spring Boot, tengo experiencia en la creación de APIs REST e implementación de seguridad usando JWT,
-        pruebas unitarias con JUnit/Mockito, integración con bases de datos como MySQL, uso de Git, Docker para contenedores y conocimientos en frontend usando Next.js, React, Angular y Kotlin.
-        Busco seguir creciendo en arquitectura de software y desarrollo de microservicios.
+      <h2 class="section-title text-center">Sobre mí</h2>
+      <p class="section-subtitle text-center">
+        Un perfil orientado al desarrollo backend, integración de servicios y construcción de soluciones modernas.
       </p>
+
+      <div class="glass-card about-box mx-auto" style="max-width: 900px;">
+        <p>
+          Soy un desarrollador backend apasionado por construir sistemas robustos, seguros y escalables.
+          Tengo experiencia trabajando con <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>Spring Security</strong>,
+          <strong>JWT</strong>, <strong>MySQL</strong>, <strong>Docker</strong> y consumo de <strong>APIs REST</strong>.
+          Además, complemento mi perfil con conocimientos en <strong>React</strong>, <strong>Next.js</strong>,
+          <strong>Angular</strong> y <strong>Kotlin</strong>, lo que me permite entender de forma más integral el desarrollo de software.
+          Actualmente busco seguir creciendo en <strong>arquitectura de software</strong>, <strong>microservicios</strong>
+          y buenas prácticas de desarrollo profesional.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- HABILIDADES -->
   <section id="habilidades" class="py-5">
-    <div class="container text-center">
-      <h2 class="text-info mb-5">Habilidades Técnicas</h2>
-      <div class="row justify-content-center gy-4">
+    <div class="container">
+      <h2 class="section-title text-center">Habilidades Técnicas</h2>
+      <p class="section-subtitle text-center">
+        Tecnologías y herramientas con las que desarrollo soluciones backend y full stack.
+      </p>
 
-        <!-- Java -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"
-              class="skill-logo mb-2">
+      <div class="row g-4 justify-content-center">
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="skill-logo">
             <p>Java</p>
           </div>
         </div>
 
-        <!-- Spring Boot -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot"
-              class="skill-logo mb-2">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" class="skill-logo">
             <p>Spring Boot</p>
           </div>
         </div>
 
-        <!-- MySQL -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
-              class="skill-logo mb-2">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="skill-logo">
             <p>MySQL</p>
           </div>
         </div>
 
-        <!-- Docker -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"
-              class="skill-logo mb-2">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="skill-logo">
             <p>Docker</p>
           </div>
         </div>
 
-        <!-- Git -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
-              class="skill-logo mb-2">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="skill-logo">
             <p>Git</p>
           </div>
         </div>
-        <!-- JTW -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <i class="bi bi-shield-lock fs-1 text-info"></i>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <i class="bi bi-shield-lock fs-1 text-info mb-2"></i>
             <p>JWT / OAuth</p>
           </div>
         </div>
 
-        <!-- Next -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next"
-              class="skill-logo mb-2">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="skill-logo">
             <p>Next.js</p>
           </div>
         </div>
 
-        <!-- React -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
-              class="skill-logo mb-2">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="skill-logo">
             <p>React</p>
           </div>
         </div>
-                <!-- Angular -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular"
-              class="skill-logo mb-2">
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" class="skill-logo">
             <p>Angular</p>
           </div>
         </div>
-                <!-- Kotlin -->
-        <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
-          <div class="skill-card p-3 border border-secondary rounded-4 bg-black">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin"
-              class="skill-logo mb-2">
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="skill-logo">
             <p>Kotlin</p>
           </div>
         </div>
@@ -188,120 +556,145 @@
   </section>
 
   <!-- PROYECTOS -->
-  <section id="proyectos" class="py-5 bg-black">
+  <section id="proyectos" class="py-5">
     <div class="container">
-      <h2 class="text-center text-info mb-5">Proyectos</h2>
-      <div class="row gy-4">
+      <h2 class="section-title text-center">Proyectos</h2>
+      <p class="section-subtitle text-center">
+        Algunos proyectos académicos y personales que reflejan mi experiencia en backend, frontend y arquitectura de software.
+      </p>
 
+      <div class="row g-4">
 
         <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+          <div class="card project-card text-light">
             <div class="card-body">
               <h5 class="card-title text-info">Sistema Clínico</h5>
-              <p class="card-text">Aplicación MVC para gestión de horarios, atención médica y reserva de citas con integración de 
-                API RENIEC para consultas de DNI, desarrollada con Java, Spring Boot, Thymeleaf y Spring Security.</p>
-              <a href="https://github.com/Chrysr17/sistema-clinico" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <p class="card-text">
+                Aplicación MVC para gestión de horarios, atención médica y reserva de citas, con integración
+                de API RENIEC para consultas por DNI. Desarrollada con Java, Spring Boot, Thymeleaf y Spring Security.
+              </p>
+              <a href="https://github.com/Chrysr17/sistema-clinico" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+          <div class="card project-card text-light">
             <div class="card-body">
               <h5 class="card-title text-info">Buscador de Autos</h5>
-              <p class="card-text">Backend desarrollado con arquitectura basada en microservicios, API Gateway, autenticación y Docker para contendores.</p>
-              <a href="https://github.com/Chrysr17/control-clientes" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <p class="card-text">
+                Backend basado en microservicios con API Gateway, autenticación, autorización y despliegue con Docker.
+                Orientado a una arquitectura escalable y desacoplada.
+              </p>
+              <a href="https://github.com/Chrysr17/auto-finder" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+          <div class="card project-card text-light">
             <div class="card-body">
               <h5 class="card-title text-info">Frontend Buscador de Autos</h5>
-              <p class="card-text">Desarrollado con Next.js, se integra con la API gateway del buscador de autos.</p>
-              <a href="https://github.com/Chrysr17/control-clientes-front" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <p class="card-text">
+                Frontend desarrollado con Next.js que consume la API Gateway del sistema de búsqueda de autos,
+                ofreciendo una experiencia moderna e integrada.
+              </p>
+              <a href="https://github.com/Chrysr17/auto-finder-front" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
         </div>
 
-                <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card text-light">
             <div class="card-body">
               <h5 class="card-title text-info">Sistema de Gimnasio</h5>
-              <p class="card-text">Backend REST en Spring Boot para gestión administrativa de gimnasio (Control de
-                clientes, inventario
-                de máquinas, ganancias, etc).</p>
-              <a href="https://github.com/Chrysr17/gym-backend" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <p class="card-text">
+                Backend REST con Spring Boot para la gestión administrativa de un gimnasio:
+                clientes, inventario, pagos, reportes y métricas clave del negocio.
+              </p>
+              <a href="https://github.com/Chrysr17/gym-backend" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+          <div class="card project-card text-light">
             <div class="card-body">
               <h5 class="card-title text-info">App Móvil Gimnasio</h5>
-              <p class="card-text">Aplicación Kotlin que consume la API REST del Sistema de Gimnasio, enfocada en los
-                clientes para historial de pagos e información de datos personales.</p>
-              <a href="https://github.com/Chrysr17/gym-mobile" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <p class="card-text">
+                Aplicación móvil en Kotlin que consume la API REST del sistema de gimnasio, enfocada en clientes
+                para consulta de pagos, historial e información personal.
+              </p>
+              <a href="https://github.com/Chrysr17/gym-mobile" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
         </div>
 
-                <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card text-light">
             <div class="card-body">
               <h5 class="card-title text-info">Dashboard Gimnasio</h5>
-              <p class="card-text">Dashboard desarrollado en Angular para visualizar KPIs importantes sobre la gestión del gimnasio.</p>
-              <a href="https://github.com/Chrysr17/gym-mobile" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <p class="card-text">
+                Dashboard en Angular para visualizar KPIs importantes del negocio, facilitando
+                el seguimiento de métricas operativas y administrativas.
+              </p>
+              <a href="https://github.com/Chrysr17/gym-dashboard" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+          <div class="card project-card text-light">
             <div class="card-body">
               <h5 class="card-title text-info">Backend Control de Clientes</h5>
-              <p class="card-text">Backend REST desarrollado con Spring Boot e implementación de JWT para la seguridad.</p>
-              <a href="https://github.com/Chrysr17/control-clientes" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <p class="card-text">
+                API REST desarrollada con Spring Boot, incluyendo autenticación y autorización
+                con JWT para proteger los endpoints del sistema.
+              </p>
+              <a href="https://github.com/Chrysr17/control-clientes" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+          <div class="card project-card text-light">
             <div class="card-body">
               <h5 class="card-title text-info">Frontend Control de Clientes</h5>
-              <p class="card-text">Frontend desarrollado con React, consume la API del Backend para el control de
-                clientes.</p>
-              <a href="https://github.com/Chrysr17/control-clientes-front" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <p class="card-text">
+                Frontend desarrollado con React para consumir la API de control de clientes,
+                con enfoque en una interfaz clara y funcional.
+              </p>
+              <a href="https://github.com/Chrysr17/control-clientes-front" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <div class="card project-card bg-dark text-light border-secondary h-100">
+          <div class="card project-card text-light">
             <div class="card-body">
-              <h5 class="card-title text-info">Login con Google OAuth 2.0 </h5>
-              <p class="card-text">Ejemplo de login usando Spring Security y Google OAuth 2.0</p>
-              <a href="https://github.com/Chrysr17/login-oauth" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="bi bi-github"></i> Ver en GitHub
+              <h5 class="card-title text-info">Login con Google OAuth 2.0</h5>
+              <p class="card-text">
+                Implementación de autenticación con Spring Security y Google OAuth 2.0
+                como ejemplo práctico de integración segura.
+              </p>
+              <a href="https://github.com/Chrysr17/login-oauth" target="_blank" class="btn btn-outline-info btn-sm rounded-pill">
+                <i class="bi bi-github me-1"></i>Ver en GitHub
               </a>
             </div>
           </div>
@@ -310,18 +703,20 @@
       </div>
     </div>
   </section>
+
   <!-- CERTIFICADOS -->
-  <section id="certificados" class="py-5 bg-dark text-light">
+  <section id="certificados" class="py-5">
     <div class="container">
-      <h2 class="text-center text-info mb-5 fw-bold">Certificados</h2>
+      <h2 class="section-title text-center">Certificados</h2>
+      <p class="section-subtitle text-center">
+        Formación complementaria que fortalece mi perfil en tecnología, desarrollo y metodologías.
+      </p>
 
       <div class="row g-4 justify-content-center">
 
-        <!-- Certificado 1 -->
         <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
-          <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card"
-            style="width: 100%; max-width: 280px;">
-            <img src="img/cloudcomputing.jpg" class="card-img-top" alt="Certificado Cloud">
+          <div class="certificate-card">
+            <img src="img/cloudcomputing.jpg" class="card-img-top" alt="Fundamentos de Cloud Computing" />
             <div class="card-body text-center">
               <h6 class="text-info fw-semibold mb-1">Fundamentos de Cloud Computing</h6>
               <p class="text-secondary small mb-0">UNI</p>
@@ -329,11 +724,9 @@
           </div>
         </div>
 
-        <!-- Certificado 2 -->
         <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
-          <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card"
-            style="width: 100%; max-width: 280px;">
-            <img src="img/cienciadatos.jpg" class="card-img-top" alt="Certificado Ciencia de Datos">
+          <div class="certificate-card">
+            <img src="img/cienciadatos.jpg" class="card-img-top" alt="Ciencia de Datos I" />
             <div class="card-body text-center">
               <h6 class="text-info fw-semibold mb-1">Ciencia de Datos I</h6>
               <p class="text-secondary small mb-0">UNI</p>
@@ -341,11 +734,9 @@
           </div>
         </div>
 
-        <!-- Certificado 3 -->
         <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
-          <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card"
-            style="width: 100%; max-width: 280px;">
-            <img src="img/diseño.jpg" class="card-img-top" alt="Certificado Web">
+          <div class="certificate-card">
+            <img src="img/diseño.jpg" class="card-img-top" alt="Diseño y Desarrollo Web" />
             <div class="card-body text-center">
               <h6 class="text-info fw-semibold mb-1">Diseño y Desarrollo Web</h6>
               <p class="text-secondary small mb-0">IDAT</p>
@@ -353,11 +744,9 @@
           </div>
         </div>
 
-        <!-- Certificado 4 -->
         <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
-          <div class="card bg-black border border-secondary rounded-4 shadow-lg overflow-hidden hover-card"
-            style="width: 100%; max-width: 280px;">
-            <img src="img/scrum.jpg" class="card-img-top" alt="Certificado Scrum">
+          <div class="certificate-card">
+            <img src="img/scrum.jpg" class="card-img-top" alt="Scrum Fundamentals" />
             <div class="card-body text-center">
               <h6 class="text-info fw-semibold mb-1">Scrum Fundamentals</h6>
               <p class="text-secondary small mb-0">SCRUMstudy</p>
@@ -367,43 +756,45 @@
 
       </div>
     </div>
-
-    <style>
-      .hover-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .hover-card:hover {
-        transform: translateY(-6px) scale(1.03);
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-      }
-
-      .card-img-top {
-        height: 180px;
-        object-fit: cover;
-      }
-    </style>
   </section>
 
-
   <!-- CONTACTO -->
-  <section id="contacto" class="py-5 text-center">
+  <section id="contacto" class="py-5">
     <div class="container">
-      <h2 class="text-info mb-4">Contacto</h2>
-      <div class="d-flex justify-content-center gap-4 mt-3">
-        <a href="https://wa.me/51981010364" target="_blank" class="text-light fs-3"><i class="bi bi-whatsapp"></i></a>
-        <a href="https://www.instagram.com/christian_sr17?igsh=MTNqbGxpbnQwdm05Yw" target="_blank"
-          class="text-light fs-3"><i class="bi bi-instagram"></i></a>
-        <a href="https://github.com/Chrysr17" target="_blank" class="text-light fs-3"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/christian-s%C3%A1nchez-726429246/" target="_blank"
-          class="text-light fs-3"><i class="bi bi-linkedin"></i></a>
+      <h2 class="section-title text-center">Contacto</h2>
+      <p class="section-subtitle text-center">
+        Puedes encontrarme en mis redes profesionales y repositorios.
+      </p>
+
+      <div class="glass-card contact-card mx-auto" style="max-width: 760px;">
+        <p class="contact-text">
+          Estoy abierto a oportunidades como desarrollador backend, prácticas profesionales
+          y proyectos donde pueda aportar con Java, Spring Boot y desarrollo de APIs.
+        </p>
+
+        <div class="social-links d-flex justify-content-center flex-wrap gap-3">
+          <a href="https://wa.me/51981010364" target="_blank" aria-label="WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <a href="https://www.instagram.com/christian_sr17?igsh=MTNqbGxpbnQwdm05Yw" target="_blank" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a href="https://github.com/Chrysr17" target="_blank" aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/christian-s%C3%A1nchez-726429246/" target="_blank" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="text-center py-3 bg-black border-top border-secondary">
-    <small class="text-secondary">© 2025 Christian Sánchez — Todos los derechos reservados.</small>
+  <footer class="text-center py-4">
+    <div class="container">
+      <small class="text-secondary">© 2026 Christian Sánchez — Todos los derechos reservados.</small>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
